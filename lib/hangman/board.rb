@@ -4,9 +4,9 @@ module Hangman
   class Board
 
     attr_accessor :number_of_incorect_guesses, :incorect_letters
-    def initialize incorect_num = 0, incorect_letters = []
-      @number_of_incorect_guesses = incorect_num
+    def initialize incorect_letters = []
       @incorect_letters = incorect_letters
+      @number_of_incorect_guesses = @incorect_letters.length
     end
 
     def draw_self incorect, word, choices

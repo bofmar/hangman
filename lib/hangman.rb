@@ -1,6 +1,6 @@
 require "hangman/version"
-require_relative "lib/board.rb"
-require_relative "lib/game.rb"
+require_relative "hangman/board.rb"
+require_relative "hangman/game.rb"
 
 puts "test"
 
