@@ -10,13 +10,14 @@ module Hangman
       @correct_letters = correct_letters
       @choices = ("A".."Z").to_a
       @choices = update_choices
+      @prompt = TTY::Prompt.new
     end
 
-    def draw_self game_on
+    def draw_self game_on, won, word, secret_word
       draw_hang
       draw_wrong_letters
-      draw_word
-      game_on ? draw_choices : draw_game_over
+      draw_word word
+      game_on ? draw_choices : won ? draw_victory : draw_game_over(secret_word)
     end
 
     def update_choices
@@ -96,14 +97,24 @@ module Hangman
       puts "Incorrect Guesses: #{incorrect_letters.join(" , ")}".colorize(:red)
     end
 
-    def draw_word
-
+    def draw_word word
+      puts "The word: #{word.join(" ")}".colorize(:light_green)
     end
 
     def draw_choices
+      update_choices
+      choice = @prompt.select("Select a letter: ", choices)
+      return choice
     end
 
-    def draw_game_over
+    def draw_victory
+      puts "Game Over".colorize(:light_green)
+      puts "You won!".colorize(:light_green)
+    end
+
+    def draw_game_over secret_word
+      puts "Game Over".colorize(:red)
+      puts "The word was #{secret_word}".colorize(:red)
     end
 
   end
