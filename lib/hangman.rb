@@ -7,8 +7,7 @@ require "tty-prompt"
 puts "test"
 
 module Hangman
-  b = Board.new(["A","B","C"])
-  b.draw_self false , false, ["_","R","O","G","R","A","_","_","I","N","G"], "BOB"
+  g = Game.new  
 end
 # Odin Commandments
 # When game is initialized, look into the dictionary and choose a random word between 5 and 10 characters long
