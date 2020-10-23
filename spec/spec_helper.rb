@@ -1,5 +1,7 @@
 require "bundler/setup"
 require "hangman"
+require "rspec/collection_matchers"
+require_relative "../lib/hangman.rb"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

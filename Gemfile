@@ -5,4 +5,5 @@ gemspec
 
 gem "rake", "~> 12.0"
 gem "rspec", "~> 3.0"
+gem "rspec-collection_matchers", group: :test
 gem "tty-prompt"

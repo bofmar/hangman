@@ -1,10 +1,11 @@
 require "hangman/version"
+require_relative "lib/board.rb"
+require_relative "lib/game.rb"
 
 puts "test"
 
 module Hangman
-  class Error < StandardError; end
-  # Your code goes here...
+
 end
 
 # Odin Commandments
