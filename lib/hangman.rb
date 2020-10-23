@@ -1,13 +1,14 @@
 require "hangman/version"
 require_relative "hangman/board.rb"
 require_relative "hangman/game.rb"
+require "colorize"
 
 puts "test"
 
 module Hangman
-
+  b = Board.new(["A","B","C"])
+  b.draw_self true
 end
-
 # Odin Commandments
 # When game is initialized, look into the dictionary and choose a random word between 5 and 10 characters long
 # Draw the hang ,the stick figure and the rest of the UI like so :
