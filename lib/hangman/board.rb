@@ -8,20 +8,23 @@ module Hangman
       @incorrect_letters = incorrect_letters
       @number_of_incorrect_guesses = @incorrect_letters.length
       @correct_letters = correct_letters
-      @choices = ("A".."Z").to_a
+      @choices = ["SAVE"]
+      @choices += ("A".."Z").to_a
       @choices = update_choices
       @prompt = TTY::Prompt.new
     end
 
     def draw_self game_on, won, word, secret_word
+      update_choices
       draw_hang
       draw_wrong_letters
       draw_word word
-      game_on ? draw_choices : won ? draw_victory : draw_game_over(secret_word)
+      return game_on ? draw_choices : won ? draw_victory : draw_game_over(secret_word)
     end
 
     def update_choices
-      new_choices = choices.select { |char| incorrect_letters.include?(char) ? false : correct_letters.include?(char)? false : true }
+      new_choices = @choices.select { |char| incorrect_letters.include?(char) ? false : correct_letters.include?(char)? false : true }
+      @choices = new_choices
     end
 
     private

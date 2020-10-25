@@ -7,7 +7,19 @@ require "tty-prompt"
 puts "test"
 
 module Hangman
-  g = Game.new  
+  prompt = TTY::Prompt.new
+  choices = ["New Game", "Load Game"]
+  puts "Welcome to Hangman!"
+  choice = prompt.select("",choices)
+
+  if choice == "New Game"
+    go_on = true
+    while(go_on)
+      game = Game.new
+      go_on = game.run
+    end
+  end
+
 end
 # Odin Commandments
 # When game is initialized, look into the dictionary and choose a random word between 5 and 10 characters long
