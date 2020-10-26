@@ -50,6 +50,19 @@ module Hangman
     def load
       if Dir.exist?("saves")
         save = display_saves
+        save_game = File.read("saves/#{save}.json")
+        save_game = JSON.parse(save_game)
+        # pass data into the game object
+        @secret_word = save_game["secret_word"]
+        @disp_word = save_game["disp_word"]
+        @incorrect_letters = save_game["incorrect_letters"]
+        @correct_letters = save_game["correct_letters"]
+        # pass data into the board object
+        board.incorrect_letters = incorrect_letters
+        board.number_of_incorrect_guesses = incorrect_letters.length
+        board.correct_letters = correct_letters
+        board.update_choices
+        run
       else
       end      
     end
