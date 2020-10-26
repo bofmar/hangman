@@ -20,7 +20,7 @@ Clone the repo to your machine, navigate to the root folder of the app and run t
 
 ## Demo
 
-![demo]()
+![demo](https://github.com/bofmar/hangman/blob/main/hangman.gif)
 
 ## Gems Used
 
