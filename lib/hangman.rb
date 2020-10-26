@@ -18,6 +18,9 @@ module Hangman
       game = Game.new
       go_on = game.run
     end
+  else
+    game = Game.new
+    game.load
   end
 
 end

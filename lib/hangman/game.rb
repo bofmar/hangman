@@ -1,5 +1,5 @@
 # ./lib/hangman/game.rb
-require json
+require "json"
 
 module Hangman
   class Game
@@ -21,15 +21,17 @@ module Hangman
       go_on = true
       while go_on
         system "clear"
+        
         choice = check_choice choice
         if choice == "STOP"
           go_on = false
         end
 
         if choice == "SAVE"
-          #execute save function
-          #show message
-          #go on as normal
+          system "clear"
+          save
+          puts "Saved successfuly"
+          choice = board.draw_self true, false, disp_word, secret_word
         end
       end
       gets
@@ -43,6 +45,13 @@ module Hangman
         puts "Thanks for playing!"
         return false
       end
+    end
+    
+    def load
+      if Dir.exist?("saves")
+        save = display_saves
+      else
+      end      
     end
 
     private
@@ -74,6 +83,7 @@ module Hangman
       if choice == "SAVE"
         return "SAVE"
       end
+
       if secret_word.include? choice
         correct_letters << choice
         board.correct_letters = correct_letters
@@ -95,8 +105,12 @@ module Hangman
     end
 
     def update_disp_word choice
-      index = secret_word.index(choice)
-      disp_word[index] = choice
+      test_word = secret_word.clone
+      while test_word.include?(choice)
+        index = test_word.index(choice)
+        test_word[index] = "-"
+        disp_word[index] = choice
+      end
     end
 
     def loss?
@@ -117,7 +131,7 @@ module Hangman
 
     def save
       contents = { "secret_word" => @secret_word, "disp_word" => @disp_word, "incorrect_letters" => @incorrect_letters, "correct_letters" => @correct_letters }.to_json
-      unless File.file?("saves")
+      unless Dir.exist?("saves")
         Dir.mkdir "saves"
       end
       puts "Select a name for your save file: "
@@ -126,7 +140,11 @@ module Hangman
       File.open(name, "w") { |f| f.write(contents) }      
     end
 
-    def load
+
+    def display_saves
+      saves = Dir["saves/**"]
+      choices = saves.map { |save| save.delete_suffix(".json").delete_prefix("saves/") }
+      return @prompt.select("Which file would you like to load?", choices)
     end
 
   end
