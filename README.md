@@ -1,44 +1,33 @@
 # Hangman
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/hangman`. To experiment with that code, run `bin/console` for an interactive prompt.
+Console based hangman game. Compete against the computer to find the secret word, before you get hanged. Made with Ruby.
 
-TODO: Delete this and the text above, and describe your gem
+## Game Description
+
+From [Wikipedia: ](https://en.wikipedia.org/wiki/Hangman_(game)) Hangman is a paper and pencil guessing game for two or more players. One player thinks of a word, phrase or sentence and the other(s) tries to guess it by suggesting letters within a certain number of guesses. 
+
+## Rules
+
+The game is played between the human and the pc. The pc will choose a random word which is represented by dashes equal to the word's length. The player must try to guess that word by choosing one letter each turn. If the word appears in the word, it will be added to the correct position. If not, the pc will draw a body part on the hang. If the entire body is drawn, the player is considered hanged, and he looses.
+
+The player has the possibility at any time to save the game, which can then be loaded from the main menu.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Clone the repo to your machine, navigate to the root folder of the app and run the following command: 
 
-```ruby
-gem 'hangman'
-```
+    bin/console
 
-And then execute:
+## Demo
 
-    $ bundle install
+![demo]()
 
-Or install it yourself as:
+## Gems Used
 
-    $ gem install hangman
+* [tty-prompt](https://github.com/piotrmurach/tty-prompt) : Provides a great way for getting inputs from the player.
 
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/hangman. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/hangman/blob/master/CODE_OF_CONDUCT.md).
-
+* [colorize](https://github.com/fazibear/colorize) : Makes it easy to display different colors on the terminal
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the Hangman project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/hangman/blob/master/CODE_OF_CONDUCT.md).
